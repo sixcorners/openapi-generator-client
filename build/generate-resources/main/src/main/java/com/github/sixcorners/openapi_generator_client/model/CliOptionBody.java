@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class CliOption {
+public class CliOptionBody {
 
   @JsonbProperty("default")
   protected String _default;
@@ -52,7 +52,7 @@ public class CliOption {
     this._default = _default;
   }
 
-  public CliOption _default(String _default) {
+  public CliOptionBody _default(String _default) {
     this._default = _default;
     return this;
   }
@@ -71,7 +71,7 @@ public class CliOption {
     this.description = description;
   }
 
-  public CliOption description(String description) {
+  public CliOptionBody description(String description) {
     this.description = description;
     return this;
   }
@@ -90,12 +90,12 @@ public class CliOption {
     this._enum = _enum;
   }
 
-  public CliOption _enum(Map<String, String> _enum) {
+  public CliOptionBody _enum(Map<String, String> _enum) {
     this._enum = _enum;
     return this;
   }
 
-  public CliOption putEnumItem(String key, String _enumItem) {
+  public CliOptionBody putEnumItem(String key, String _enumItem) {
     if (this._enum == null) {
       this._enum = new HashMap<>();
     }
@@ -117,7 +117,7 @@ public class CliOption {
     this.opt = opt;
   }
 
-  public CliOption opt(String opt) {
+  public CliOptionBody opt(String opt) {
     this.opt = opt;
     return this;
   }
@@ -136,7 +136,7 @@ public class CliOption {
     this.optValue = optValue;
   }
 
-  public CliOption optValue(String optValue) {
+  public CliOptionBody optValue(String optValue) {
     this.optValue = optValue;
     return this;
   }
@@ -155,7 +155,7 @@ public class CliOption {
     this.type = type;
   }
 
-  public CliOption type(String type) {
+  public CliOptionBody type(String type) {
     this.type = type;
     return this;
   }
@@ -168,7 +168,7 @@ public class CliOption {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CliOption cliOption = (CliOption) o;
+    CliOptionBody cliOption = (CliOptionBody) o;
     return Objects.equals(this._default, cliOption._default)
         && Objects.equals(this.description, cliOption.description)
         && Objects.equals(this._enum, cliOption._enum)
@@ -186,7 +186,7 @@ public class CliOption {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CliOption {\n");
+    sb.append("class CliOptionBody {\n");
 
     sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");

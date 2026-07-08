@@ -12,9 +12,9 @@
 
 package com.github.sixcorners.openapi_generator_client.api;
 
-import com.github.sixcorners.openapi_generator_client.model.CliOption;
-import com.github.sixcorners.openapi_generator_client.model.GeneratorInput;
-import com.github.sixcorners.openapi_generator_client.model.ResponseCode;
+import com.github.sixcorners.openapi_generator_client.model.CliOptionBody;
+import com.github.sixcorners.openapi_generator_client.model.GeneratorInputBody;
+import com.github.sixcorners.openapi_generator_client.model.ResponseCodeBody;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import jakarta.ws.rs.*;
@@ -51,7 +51,30 @@ public interface ClientsApi {
   @GET
   @Path("/download/{fileId}")
   @Produces({"application/octet-stream"})
-  File downloadFile(@PathParam("fileId") String fileId) throws ApiException, ProcessingException;
+  File downloadFile(@BeanParam DownloadFileRequest request)
+      throws ApiException, ProcessingException;
+
+  public class DownloadFileRequest {
+
+    private @PathParam("fileId") String fileId;
+
+    private DownloadFileRequest() {}
+
+    public static DownloadFileRequest newInstance() {
+      return new DownloadFileRequest();
+    }
+
+    /**
+     * Set fileId
+     *
+     * @param fileId fileId (required)
+     * @return DownloadFileRequest
+     */
+    public DownloadFileRequest fileId(String fileId) {
+      this.fileId = fileId;
+      return this;
+    }
+  }
 
   /**
    * Generates a client library
@@ -62,14 +85,58 @@ public interface ClientsApi {
   @Path("/clients/{language}")
   @Consumes({"application/json"})
   @Produces({"*/*"})
-  ResponseCode generateClient(
-      @PathParam("language") String language, @Valid GeneratorInput generatorInput)
+  ResponseCodeBody generateClient(
+      @BeanParam GenerateClientRequest request, @Valid GeneratorInputBody generatorInput)
       throws ApiException, ProcessingException;
+
+  public class GenerateClientRequest {
+
+    private @PathParam("language") String language;
+
+    private GenerateClientRequest() {}
+
+    public static GenerateClientRequest newInstance() {
+      return new GenerateClientRequest();
+    }
+
+    /**
+     * Set language
+     *
+     * @param language The target language for the client library (required)
+     * @return GenerateClientRequest
+     */
+    public GenerateClientRequest language(String language) {
+      this.language = language;
+      return this;
+    }
+  }
 
   /** Returns options for a client library */
   @GET
   @Path("/clients/{language}")
   @Produces({"application/json"})
-  Map<String, CliOption> getClientOptions(@PathParam("language") String language)
+  Map<String, CliOptionBody> getClientOptions(@BeanParam GetClientOptionsRequest request)
       throws ApiException, ProcessingException;
+
+  public class GetClientOptionsRequest {
+
+    private @PathParam("language") String language;
+
+    private GetClientOptionsRequest() {}
+
+    public static GetClientOptionsRequest newInstance() {
+      return new GetClientOptionsRequest();
+    }
+
+    /**
+     * Set language
+     *
+     * @param language The target language for the client library (required)
+     * @return GetClientOptionsRequest
+     */
+    public GetClientOptionsRequest language(String language) {
+      this.language = language;
+      return this;
+    }
+  }
 }

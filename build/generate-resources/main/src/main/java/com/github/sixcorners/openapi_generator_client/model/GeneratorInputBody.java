@@ -20,10 +20,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class GeneratorInput {
+public class GeneratorInputBody {
 
   @JsonbProperty("authorizationValue")
-  protected AuthorizationValue authorizationValue;
+  protected AuthorizationValueBody authorizationValue;
 
   @JsonbProperty("openAPIUrl")
   protected String openAPIUrl;
@@ -42,16 +42,16 @@ public class GeneratorInput {
    *
    * @return authorizationValue
    */
-  public AuthorizationValue getAuthorizationValue() {
+  public AuthorizationValueBody getAuthorizationValue() {
     return authorizationValue;
   }
 
   /** Set authorizationValue */
-  public void setAuthorizationValue(AuthorizationValue authorizationValue) {
+  public void setAuthorizationValue(AuthorizationValueBody authorizationValue) {
     this.authorizationValue = authorizationValue;
   }
 
-  public GeneratorInput authorizationValue(AuthorizationValue authorizationValue) {
+  public GeneratorInputBody authorizationValue(AuthorizationValueBody authorizationValue) {
     this.authorizationValue = authorizationValue;
     return this;
   }
@@ -70,7 +70,7 @@ public class GeneratorInput {
     this.openAPIUrl = openAPIUrl;
   }
 
-  public GeneratorInput openAPIUrl(String openAPIUrl) {
+  public GeneratorInputBody openAPIUrl(String openAPIUrl) {
     this.openAPIUrl = openAPIUrl;
     return this;
   }
@@ -89,12 +89,12 @@ public class GeneratorInput {
     this.openapiNormalizer = openapiNormalizer;
   }
 
-  public GeneratorInput openapiNormalizer(List<String> openapiNormalizer) {
+  public GeneratorInputBody openapiNormalizer(List<String> openapiNormalizer) {
     this.openapiNormalizer = openapiNormalizer;
     return this;
   }
 
-  public GeneratorInput addOpenapiNormalizerItem(String openapiNormalizerItem) {
+  public GeneratorInputBody addOpenapiNormalizerItem(String openapiNormalizerItem) {
     if (this.openapiNormalizer == null) {
       this.openapiNormalizer = new ArrayList<>();
     }
@@ -116,12 +116,12 @@ public class GeneratorInput {
     this.options = options;
   }
 
-  public GeneratorInput options(Map<String, String> options) {
+  public GeneratorInputBody options(Map<String, String> options) {
     this.options = options;
     return this;
   }
 
-  public GeneratorInput putOptionsItem(String key, String optionsItem) {
+  public GeneratorInputBody putOptionsItem(String key, String optionsItem) {
     if (this.options == null) {
       this.options = new HashMap<>();
     }
@@ -143,7 +143,7 @@ public class GeneratorInput {
     this.spec = spec;
   }
 
-  public GeneratorInput spec(Object spec) {
+  public GeneratorInputBody spec(Object spec) {
     this.spec = spec;
     return this;
   }
@@ -156,7 +156,7 @@ public class GeneratorInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GeneratorInput generatorInput = (GeneratorInput) o;
+    GeneratorInputBody generatorInput = (GeneratorInputBody) o;
     return Objects.equals(this.authorizationValue, generatorInput.authorizationValue)
         && Objects.equals(this.openAPIUrl, generatorInput.openAPIUrl)
         && Objects.equals(this.openapiNormalizer, generatorInput.openapiNormalizer)
@@ -173,7 +173,7 @@ public class GeneratorInput {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GeneratorInput {\n");
+    sb.append("class GeneratorInputBody {\n");
 
     sb.append("    authorizationValue: ").append(toIndentedString(authorizationValue)).append("\n");
     sb.append("    openAPIUrl: ").append(toIndentedString(openAPIUrl)).append("\n");

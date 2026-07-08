@@ -16,7 +16,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.validation.constraints.*;
 import java.util.Objects;
 
-public class AuthorizationValue {
+public class AuthorizationValueBody {
 
   @JsonbProperty("keyName")
   protected String keyName;
@@ -44,7 +44,7 @@ public class AuthorizationValue {
     this.keyName = keyName;
   }
 
-  public AuthorizationValue keyName(String keyName) {
+  public AuthorizationValueBody keyName(String keyName) {
     this.keyName = keyName;
     return this;
   }
@@ -63,7 +63,7 @@ public class AuthorizationValue {
     this.type = type;
   }
 
-  public AuthorizationValue type(String type) {
+  public AuthorizationValueBody type(String type) {
     this.type = type;
     return this;
   }
@@ -82,7 +82,7 @@ public class AuthorizationValue {
     this.urlMatcher = urlMatcher;
   }
 
-  public AuthorizationValue urlMatcher(Object urlMatcher) {
+  public AuthorizationValueBody urlMatcher(Object urlMatcher) {
     this.urlMatcher = urlMatcher;
     return this;
   }
@@ -101,7 +101,7 @@ public class AuthorizationValue {
     this.value = value;
   }
 
-  public AuthorizationValue value(String value) {
+  public AuthorizationValueBody value(String value) {
     this.value = value;
     return this;
   }
@@ -114,7 +114,7 @@ public class AuthorizationValue {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AuthorizationValue authorizationValue = (AuthorizationValue) o;
+    AuthorizationValueBody authorizationValue = (AuthorizationValueBody) o;
     return Objects.equals(this.keyName, authorizationValue.keyName)
         && Objects.equals(this.type, authorizationValue.type)
         && Objects.equals(this.urlMatcher, authorizationValue.urlMatcher)
@@ -130,7 +130,7 @@ public class AuthorizationValue {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AuthorizationValue {\n");
+    sb.append("class AuthorizationValueBody {\n");
 
     sb.append("    keyName: ").append(toIndentedString(keyName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

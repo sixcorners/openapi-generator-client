@@ -12,9 +12,9 @@
 
 package com.github.sixcorners.openapi_generator_client.api;
 
-import com.github.sixcorners.openapi_generator_client.model.CliOption;
-import com.github.sixcorners.openapi_generator_client.model.GeneratorInput;
-import com.github.sixcorners.openapi_generator_client.model.ResponseCode;
+import com.github.sixcorners.openapi_generator_client.model.CliOptionBody;
+import com.github.sixcorners.openapi_generator_client.model.GeneratorInputBody;
+import com.github.sixcorners.openapi_generator_client.model.ResponseCodeBody;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import jakarta.ws.rs.*;
@@ -45,7 +45,30 @@ public interface ServersApi {
   @GET
   @Path("/download/{fileId}")
   @Produces({"application/octet-stream"})
-  File downloadFile(@PathParam("fileId") String fileId) throws ApiException, ProcessingException;
+  File downloadFile(@BeanParam DownloadFileRequest request)
+      throws ApiException, ProcessingException;
+
+  public class DownloadFileRequest {
+
+    private @PathParam("fileId") String fileId;
+
+    private DownloadFileRequest() {}
+
+    public static DownloadFileRequest newInstance() {
+      return new DownloadFileRequest();
+    }
+
+    /**
+     * Set fileId
+     *
+     * @param fileId fileId (required)
+     * @return DownloadFileRequest
+     */
+    public DownloadFileRequest fileId(String fileId) {
+      this.fileId = fileId;
+      return this;
+    }
+  }
 
   /**
    * Generates a server library
@@ -56,16 +79,60 @@ public interface ServersApi {
   @Path("/servers/{framework}")
   @Consumes({"application/json"})
   @Produces({"*/*"})
-  ResponseCode generateServerForLanguage(
-      @PathParam("framework") String framework, @Valid GeneratorInput generatorInput)
+  ResponseCodeBody generateServerForLanguage(
+      @BeanParam GenerateServerForLanguageRequest request, @Valid GeneratorInputBody generatorInput)
       throws ApiException, ProcessingException;
+
+  public class GenerateServerForLanguageRequest {
+
+    private @PathParam("framework") String framework;
+
+    private GenerateServerForLanguageRequest() {}
+
+    public static GenerateServerForLanguageRequest newInstance() {
+      return new GenerateServerForLanguageRequest();
+    }
+
+    /**
+     * Set framework
+     *
+     * @param framework framework (required)
+     * @return GenerateServerForLanguageRequest
+     */
+    public GenerateServerForLanguageRequest framework(String framework) {
+      this.framework = framework;
+      return this;
+    }
+  }
 
   /** Returns options for a server framework */
   @GET
   @Path("/servers/{framework}")
   @Produces({"application/json"})
-  Map<String, CliOption> getServerOptions(@PathParam("framework") String framework)
+  Map<String, CliOptionBody> getServerOptions(@BeanParam GetServerOptionsRequest request)
       throws ApiException, ProcessingException;
+
+  public class GetServerOptionsRequest {
+
+    private @PathParam("framework") String framework;
+
+    private GetServerOptionsRequest() {}
+
+    public static GetServerOptionsRequest newInstance() {
+      return new GetServerOptionsRequest();
+    }
+
+    /**
+     * Set framework
+     *
+     * @param framework The target language for the server framework (required)
+     * @return GetServerOptionsRequest
+     */
+    public GetServerOptionsRequest framework(String framework) {
+      this.framework = framework;
+      return this;
+    }
+  }
 
   /** Gets languages supported by the server generator */
   @GET

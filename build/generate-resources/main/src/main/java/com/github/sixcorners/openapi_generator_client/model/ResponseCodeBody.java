@@ -16,7 +16,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.validation.constraints.*;
 import java.util.Objects;
 
-public class ResponseCode {
+public class ResponseCodeBody {
 
   /** File download code */
   @JsonbProperty("code")
@@ -40,7 +40,7 @@ public class ResponseCode {
     this.code = code;
   }
 
-  public ResponseCode code(String code) {
+  public ResponseCodeBody code(String code) {
     this.code = code;
     return this;
   }
@@ -59,7 +59,7 @@ public class ResponseCode {
     this.link = link;
   }
 
-  public ResponseCode link(String link) {
+  public ResponseCodeBody link(String link) {
     this.link = link;
     return this;
   }
@@ -72,7 +72,7 @@ public class ResponseCode {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResponseCode responseCode = (ResponseCode) o;
+    ResponseCodeBody responseCode = (ResponseCodeBody) o;
     return Objects.equals(this.code, responseCode.code)
         && Objects.equals(this.link, responseCode.link);
   }
@@ -86,7 +86,7 @@ public class ResponseCode {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResponseCode {\n");
+    sb.append("class ResponseCodeBody {\n");
 
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");

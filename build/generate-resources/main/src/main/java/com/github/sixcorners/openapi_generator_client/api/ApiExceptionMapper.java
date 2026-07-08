@@ -14,10 +14,8 @@ package com.github.sixcorners.openapi_generator_client.api;
 
 import jakarta.ws.rs.core.MultivaluedMap;
 import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.ext.Provider;
 import org.eclipse.microprofile.rest.client.ext.ResponseExceptionMapper;
 
-@Provider
 public class ApiExceptionMapper implements ResponseExceptionMapper<ApiException> {
 
   @Override
