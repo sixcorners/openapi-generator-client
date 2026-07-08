@@ -52,6 +52,7 @@ openApiGenerate {
   invokerPackage = "${project.group}.${project.name}"
   apiPackage = "${invokerPackage.get()}.api"
   modelPackage = "${invokerPackage.get()}.model"
+  modelNameSuffix = "Body"
   generatorName = "java"
   library = "microprofile"
   configOptions.put("configKey", project.name)

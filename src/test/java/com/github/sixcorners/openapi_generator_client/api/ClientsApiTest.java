@@ -3,7 +3,7 @@ package com.github.sixcorners.openapi_generator_client.api;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.github.sixcorners.openapi_generator_client.model.GeneratorInput;
+import com.github.sixcorners.openapi_generator_client.model.GeneratorInputBody;
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +31,7 @@ public class ClientsApiTest {
   public void generateClientTest() {
     var req = ClientsApi.GenerateClientRequest.newInstance();
     req.language("java");
-    var generatorInput = new GeneratorInput();
+    var generatorInput = new GeneratorInputBody();
     assertThrows(ApiException.class, () -> client.generateClient(req, generatorInput));
   }
 
